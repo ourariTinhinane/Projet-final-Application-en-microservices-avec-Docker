@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliothèque Numérique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bibliothèque Numérique</h1>
+        
+        <div class="form-section">
+            <h2>Ajouter un livre</h2>
+            <form id="addBookForm">
+                <input type="text" id="title" placeholder="Titre" required>
+                <input type="text" id="author" placeholder="Auteur" required>
+                <input type="number" id="year" placeholder="Année" required>
+                <button type="submit">Ajouter</button>
+            </form>
+        </div>
+
+        <div class="books-section">
+            <h2>Liste des livres</h2>
+            <div id="booksList"></div>
+        </div>
+    </div>
+
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Modifier le livre</h2>
+        <form id="editForm">
+            <input type="text" id="editTitle" placeholder="Titre" required>
+            <input type="text" id="editAuthor" placeholder="Auteur" required>
+            <input type="number" id="editYear" placeholder="Année" required>
+            <button type="submit">Sauvegarder</button>
+        </form>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+/* Container principal avec grid layout */
+.container {
+    max-width: 100%;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f9;
+    display: grid;
+    /*grid-template-columns: 1fr 350px;  Divise en deux colonnes */
+    gap: 20px;
+    min-height: 100vh;
+}
+
+/* Section principale (gauche) */
+.main-content {
+    padding-right: 20px;
+}
+
+/* Section du formulaire */
+.form-section {
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal transformée en sidebar fixe */
+.modal {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 320px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 40px); /* Hauteur totale moins les marges */
+    overflow-y: auto; /* Permet le scroll si le contenu est trop long */
+}
+
+/* Suppression des propriétés display:none et opacity pour le modal */
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Styles des formulaires */
+form {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: calc(100% - 20px); /* Largeur complète moins le padding */
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Liste des livres */
+.books-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Carte des livres */
+.book-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Ajustement pour le bouton de fermeture du modal */
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
