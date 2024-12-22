@@ -1,3 +1,4 @@
+# Importation des modules nécessaires
 from fastapi import FastAPI, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, Column, Integer, String
@@ -6,8 +7,10 @@ from sqlalchemy.orm import sessionmaker
 import os
 from typing import Optional
 
+# Initialisation de l'application FastAPI
 app = FastAPI()
 
+# Configuration du middleware CORS (Cross-Origin Resource Sharing)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -16,10 +19,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Configuration de la base de données
 SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# Déclaration de la base pour les modèles
 Base = declarative_base()
 
 class Book(Base):
@@ -32,6 +37,7 @@ class Book(Base):
 
 Base.metadata.create_all(bind=engine)
 
+# Route POST pour ajouter un livre
 @app.post("/books/")
 async def create_book(
     title: str = Form(...),
@@ -51,6 +57,7 @@ async def create_book(
     finally:
         db.close()
 
+# Route GET pour récupérer tous les livres
 @app.get("/books/")
 async def get_books():
     try:
@@ -88,6 +95,8 @@ async def update_book(
     finally:
         db.close()
 
+
+# Route DELETE pour supprimer un livre
 @app.delete("/books/{book_id}")
 async def delete_book(book_id: int):
     try:
@@ -102,4 +111,4 @@ async def delete_book(book_id: int):
         db.rollback()
         raise HTTPException(status_code=500, detail=str(e))
     finally:
-        db.close()
+        db.close() # Fermeture de la session
